@@ -13,6 +13,8 @@ namespace SolutionGestionProjets.Infrastructure
     {
         public DbSet<Projet> Projets { get; set; }
 
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+
         public SolutionGestionProjetsContext(DbContextOptions options) :
                              base(options)
         { }

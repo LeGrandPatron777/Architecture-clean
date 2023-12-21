@@ -3,43 +3,110 @@ using SolutionGestionProjets.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
 using SolutionGestionProjets.Infrastructure.Repositories;
-using System.Threading.Tasks; // Ajouté pour Task
+using System.Threading.Tasks;
 using SystèmeGestionStationService.SharedKernel.Interfaces;
 
 namespace SolutionGestionProjets.ConsoleTestApp
 {
     class Program
     {
-        static async Task Main(string[] args) // Main est maintenant async Task
+        static async Task Main(string[] args)
         {
-            
+            // Exemples d'appels des méthodes
+            await AddProjet(new Projet(1, new DateTime(2023, 01, 01), new DateTime(2024, 01, 02), 100000));
+            await UpdateProjet(1, new DateTime(2023, 02, 01), new DateTime(2024, 02, 02), 1202440);
+            await GetProjet(1);
+            await DeleteProjet(1);
 
-            await Test2(); // Attendre l'exécution de Test2 qui est une méthode asynchrone
+            await AddUtilisateur(new Utilisateur(1, "Dupont", "Jean", "123 rue de Paris", 0123456789, new DateTime(2020, 01, 01), "jdupont", "password123"));
+            bool isAuthenticated = await AuthenticateUser("jdupont", "password123");
+            Console.WriteLine(isAuthenticated ? "Authentification réussie" : "Échec de l'authentification");
         }
 
-        static void Test1()
-        {
-            using (var context = new SolutionGestionProjetsContext()) // Utilisation d'un bloc using pour la disposition correcte
-            {
-                // Ajouter un projet
-                Projet projet = new Projet("smane"); // Assurez-vous que le constructeur prend un string comme argument
-                context.Add(projet);
-
-                context.SaveChanges();
-            }
-        }
-
-        static async Task Test2()
+        static async Task AddProjet(Projet projet)
         {
             using (var context = new SolutionGestionProjetsContext())
             {
-                IAsyncRepository<Projet> repository = new EfRepository<Projet>(context);
-                Projet projet = await repository.GetByIdAsync(2);
+                context.Add(projet);
+                await context.SaveChangesAsync();
+                Console.WriteLine("Projet ajouté");
+            }
+        }
+
+        static async Task GetProjet(int id)
+        {
+            using (var context = new SolutionGestionProjetsContext())
+            {
+                var projet = await context.Projets.FindAsync(id);
                 if (projet != null)
-                    Console.WriteLine(projet.Name);
+                    Console.WriteLine($"Budget du projet : {projet.BudgetTotal}");
                 else
                     Console.WriteLine("Projet introuvable");
             }
         }
+
+        static async Task UpdateProjet(int id, DateTime newDateDebut, DateTime newDateFin, float newBudgetTotal)
+        {
+            using (var context = new SolutionGestionProjetsContext())
+            {
+                var projet = await context.Projets.FindAsync(id);
+                if (projet != null)
+                {
+                    projet.DateDebut = newDateDebut;
+                    projet.DateFin = newDateFin;
+                    projet.BudgetTotal = newBudgetTotal;
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine("Projet introuvable pour la mise à jour");
+                }
+            }
+        }
+
+        static async Task DeleteProjet(int id)
+        {
+            using (var context = new SolutionGestionProjetsContext())
+            {
+                var projet = await context.Projets.FindAsync(id);
+                if (projet != null)
+                {
+                    context.Projets.Remove(projet);
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine("Projet introuvable pour la suppression");
+                }
+            }
+        }
+
+        static async Task AddUtilisateur(Utilisateur utilisateur)
+        {
+            using (var context = new SolutionGestionProjetsContext())
+            {
+                context.Utilisateurs.Add(utilisateur);
+                await context.SaveChangesAsync();
+                Console.WriteLine("Utilisateur ajouté");
+            }
+        }
+
+        static async Task<bool> AuthenticateUser(string nomConnexion, string motDePasse)
+        {
+            using (var context = new SolutionGestionProjetsContext())
+            {
+                var utilisateur = await context.Utilisateurs
+                                    .FirstOrDefaultAsync(u => u.NomConnexion == nomConnexion);
+
+                if (utilisateur != null && utilisateur.MotDePasse == motDePasse)
+                {
+                    return true; // Authentification réussie
+                }
+
+                return false; // Échec de l'authentification
+            }
+        }
     }
+
+
 }
