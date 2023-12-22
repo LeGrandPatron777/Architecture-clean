@@ -5,11 +5,13 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystèmeGestionStationService.SharedKernel", "SystèmeGestionStationService.SharedKernel\SystèmeGestionStationService.SharedKernel.csproj", "{A01C40EE-67B4-403F-AC58-11A0E41DA326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionGestionProjets.Core", "SolutionGestionProjets.Core\SolutionGestionProjets.Core.csproj", "{1EB51590-76A7-4AFF-8C38-4E08525A0F12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionGestionProjets.Core", "SolutionGestionProjets.Core\SolutionGestionProjets.Core.csproj", "{1EB51590-76A7-4AFF-8C38-4E08525A0F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionGestionProjets.Infrastructure", "SolutionGestionProjets.Infrastructure\SolutionGestionProjets.Infrastructure.csproj", "{A7E10100-EF51-4D35-830F-415E6271EC5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionGestionProjets.Infrastructure", "SolutionGestionProjets.Infrastructure\SolutionGestionProjets.Infrastructure.csproj", "{A7E10100-EF51-4D35-830F-415E6271EC5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionGestionProjets.ConsoleTestApp", "SolutionGestionProjets.ConsoleTestApp\SolutionGestionProjets.ConsoleTestApp.csproj", "{0FD12E28-2B45-4A44-9808-6DBA5F6AE4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionGestionProjets.ConsoleTestApp", "SolutionGestionProjets.ConsoleTestApp\SolutionGestionProjets.ConsoleTestApp.csproj", "{0FD12E28-2B45-4A44-9808-6DBA5F6AE4F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionGestionProjets.InterfaceUtilisateur", "SolutionGestionProjets.InterfaceUtilisateur\SolutionGestionProjets.InterfaceUtilisateur.csproj", "{636D749E-0A0F-4E1F-A3F5-4C5E5935A401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0FD12E28-2B45-4A44-9808-6DBA5F6AE4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FD12E28-2B45-4A44-9808-6DBA5F6AE4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FD12E28-2B45-4A44-9808-6DBA5F6AE4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636D749E-0A0F-4E1F-A3F5-4C5E5935A401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636D749E-0A0F-4E1F-A3F5-4C5E5935A401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636D749E-0A0F-4E1F-A3F5-4C5E5935A401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636D749E-0A0F-4E1F-A3F5-4C5E5935A401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

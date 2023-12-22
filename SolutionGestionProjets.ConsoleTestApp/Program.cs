@@ -12,15 +12,15 @@ namespace SolutionGestionProjets.ConsoleTestApp
     {
         static async Task Main(string[] args)
         {
-            // Exemples d'appels des méthodes
-            await AddProjet(new Projet(1, new DateTime(2023, 01, 01), new DateTime(2024, 01, 02), 100000));
-            await UpdateProjet(1, new DateTime(2023, 02, 01), new DateTime(2024, 02, 02), 1202440);
-            await GetProjet(1);
-            await DeleteProjet(1);
 
-            await AddUtilisateur(new Utilisateur(1, "Dupont", "Jean", "123 rue de Paris", 0123456789, new DateTime(2020, 01, 01), "jdupont", "password123"));
-            bool isAuthenticated = await AuthenticateUser("jdupont", "password123");
-            Console.WriteLine(isAuthenticated ? "Authentification réussie" : "Échec de l'authentification");
+            //await AddProjet(new Projet(1, new DateTime(2023, 01, 01), new DateTime(2024, 01, 02), 100000));
+            //await UpdateProjet(2, 2, new DateTime(2023, 02, 01), new DateTime(2024, 02, 02), 1202440);
+            //await GetProjet(1);
+            //await DeleteProjet(2);
+
+            //await AddUtilisateur(new Utilisateur(1, "Ousmane", "Kouyate", "123 rue de Paris", 0123456789, new DateTime(2020, 01, 01), "ousmane", "mdp123"));
+            bool isAuthenticated = await AuthenticateUser("ousmane", "mdp1234");
+            //Console.WriteLine(isAuthenticated ? "Authentification réussie" : "Échec de l'authentification");
         }
 
         static async Task AddProjet(Projet projet)
@@ -45,13 +45,14 @@ namespace SolutionGestionProjets.ConsoleTestApp
             }
         }
 
-        static async Task UpdateProjet(int id, DateTime newDateDebut, DateTime newDateFin, float newBudgetTotal)
+        static async Task UpdateProjet(int id,int newNumero, DateTime newDateDebut, DateTime newDateFin, float newBudgetTotal)
         {
             using (var context = new SolutionGestionProjetsContext())
             {
                 var projet = await context.Projets.FindAsync(id);
                 if (projet != null)
                 {
+                    projet.Numero = newNumero;
                     projet.DateDebut = newDateDebut;
                     projet.DateFin = newDateFin;
                     projet.BudgetTotal = newBudgetTotal;

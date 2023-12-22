@@ -1,0 +1,9 @@
+﻿<Application x:Class="SolutionGestionProjets.InterfaceUtilisateur.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SolutionGestionProjets.InterfaceUtilisateur"
+             StartupUri="Views/AddProjetView.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

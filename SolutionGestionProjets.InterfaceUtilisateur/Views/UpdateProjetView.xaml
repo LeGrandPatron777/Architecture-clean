@@ -1,0 +1,36 @@
+﻿<Window x:Class="SolutionGestionProjets.InterfaceUtilisateur.Views.UpdateProjetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SolutionGestionProjets.InterfaceUtilisateur.Views"
+        mc:Ignorable="d"
+        Title="UpdateProjetView" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Numéro" Margin="5"/>
+        <TextBox Grid.Row="1" x:Name="txtNumero" Margin="5"/>
+
+        <TextBlock Grid.Row="2" Text="Date de Début" Margin="5"/>
+        <DatePicker Grid.Row="3" x:Name="dpDateDebut" Margin="5"/>
+
+        <TextBlock Grid.Row="4" Text="Date de Fin" Margin="5"/>
+        <DatePicker Grid.Row="5" x:Name="dpDateFin" Margin="5"/>
+
+        <TextBlock Grid.Row="6" Text="Budget Total" Margin="5"/>
+        <TextBox Grid.Row="7" x:Name="txtBudgetTotal" Margin="5"/>
+
+        <Button Grid.Row="8" x:Name="BtnMaj" Content="Mettre à jour" Margin="5" Click="BtnAjouter_Click"/>
+    </Grid>
+</Window>
